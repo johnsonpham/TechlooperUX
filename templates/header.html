@@ -1,0 +1,33 @@
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="col-md-4 setting-block">
+            <div class="setting-content">
+                <div class="setting-label">
+                    <i class="fa fa-cog" ng-click="settingStyle()"></i>
+                </div>
+                <ul class="setting-items">
+                    <li><i class="fa fa-pie-chart" title="Pie Chart"></i></li>
+                    <li><i class="fa fa-bubble-chart" title="Bubble Chart"></i></li>
+                    <li class="keyboard"><i class="fa fa-keyboard-o" title="Keyboard Shortcuts" ng-click="openKeyboardShortcuts()"></i>
+                         <div class="keyboard-shortcuts-items">
+                             <ul>
+                                 <li ng-repeat="tagline in items">
+                                     {{tagline}}
+                                 </li>
+                             </ul>
+                         </div>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="col-md-4 logo-block text-center">
+            <div class="logo">
+                <h1><a href="#/"><img src="images/logo.png" alt="Career Analytics. Open Source. Awesome!"></a></h1>
+            </div>
+            <p class="tagline">{{tagline}}</p>
+        </div>
+        <div class="col-md-4 search-bar"></div>
+    </div>
+    <!-- /.container -->
+</nav>

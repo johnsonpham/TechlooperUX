@@ -1,0 +1,75 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #2e272a;
+    color: #727272;
+    font-family: 'roboto',arial;
+    font-weight: 300;
+}
+ul{
+    list-style: none;
+}
+/* -- style for header -- */
+.setting-label{
+    
+}
+.fa-bubble-chart{
+    background: url(../images/ic-small.png) left 3px no-repeat;
+    height: 20px;   
+    width: 20px;
+}
+.navbar-inverse{
+    background:url(../images/line-header.png) #2e272a center bottom no-repeat;
+    border: 0;
+}
+.tagline{}
+.setting-content{
+    background-color: #323232;
+    border: 1px solid #3d373a;
+    padding: 4px;
+    border-radius: 5px;
+    max-height: 30px;
+    height: 30px;
+    width: 28px;
+    position: relative;
+}
+.setting-content i{
+    font-size:20px;
+    cursor: pointer;
+}
+.setting-label{
+    width:20px;
+    float: left;
+    cursor: pointer;
+}
+.setting-content ul{margin: 0; padding: 0;}
+ul.setting-items{
+    display: none;
+}
+.setting-content li{
+    float: left;
+    padding-left: 10px; 
+}
+.keyboard-shortcuts-items{
+    position: absolute;
+    z-index: 99;
+    width:220px;
+    padding:10px;
+    background-color: #000000;
+    top: 26px; left: -1px;
+    display: none;
+    border: 1px solid #3d373a;
+    text-align: left;
+}
+.keyboard-shortcuts-items li{
+    display: block;
+    clear: both;
+    border-top: 1px solid #2d2d2d;
+    padding: 5px 0;
+    width: 100%;
+}
+.keyboard-shortcuts-items li:first-child{
+    border-top: 0;
+}
