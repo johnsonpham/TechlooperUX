@@ -11,8 +11,8 @@
                     <li class="keyboard"><i class="fa fa-keyboard-o" title="Keyboard Shortcuts"></i>
                          <div class="keyboard-shortcuts-items">
                              <ul>
-                                 <li ng-repeat="tagline in items">
-                                     {{tagline}}
+                                 <li ng-repeat="item in items">
+                                    <span> {{item.name}}</span>{{item.keyShort}}
                                  </li>
                              </ul>
                          </div>

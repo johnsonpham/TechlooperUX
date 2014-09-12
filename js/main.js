@@ -13,7 +13,33 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 app.controller('PageCtrl', ['$scope', function ($scope) {
  	$scope.tagline ='Career Analytics. Open Source. Awesome!';
-	$scope.items = ['Career Analytics     Ctrl + Alt + A','Find Job    Ctrl + Alt + F'];
+
+ 	$scope.selectItem = function( item ) {
+		$scope.selectedItems.push( item );
+	};
+	$scope.items = [
+		{
+			id: 1,
+			name: 'Career Analytics', 
+			keyShort: 'Ctrl + Alt + A'
+		},
+		{
+			id: 2,
+			name: 'Find Job', 
+			keyShort: 'Ctrl + Alt + F'
+		},
+		{
+			id: 3,
+			name: 'Function Name 1', 
+			keyShort: 'Ctrl + Alt + 1'
+		},
+		{
+			id: 4,
+			name: 'Function Name 2', 
+			keyShort: 'Ctrl + Alt + 2'
+		}
+	];
+	$scope.selectedItems = [];
 }]);
 
 app.controller('openCompaniesBar', ['$scope', function ($scope) {
