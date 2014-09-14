@@ -9,10 +9,10 @@
                     <li><i class="fa fa-pie-chart" title="Pie Chart"></i></li>
                     <li><i class="fa fa-bubble-chart" title="Bubble Chart"></i></li>
                     <li class="keyboard"><i class="fa fa-keyboard-o" title="Keyboard Shortcuts"></i>
-                         <div class="keyboard-shortcuts-items">
+                         <div class="keyboard-shortcuts-items" ng-controller="loadKeyboard">
                              <ul>
-                                 <li ng-repeat="item in items">
-                                    <span> {{item.name}}</span>{{item.keyShort}}
+                                 <li ng-repeat="key in keyList">
+                                    <span>{{key.name}}</span>{{key.keyShort}}
                                  </li>
                              </ul>
                          </div>
