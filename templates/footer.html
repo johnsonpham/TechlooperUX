@@ -1,15 +1,14 @@
 <footer>
-    <div class="container">
+    <div class="container" ng-controller ="loadCompanies">
         <div class="companies-block" ng-controller="openCompaniesBar">
            <h2 class="companies-bar "><i class="fa fa-arrow-up"></i> Companies</h2>
            <div class="companies-list">
                <ul>
-                   <li><a href="#"></a></li>
-                   <li><a href="#"></a></li>
-                   <li><a href="#"></a></li>
-                   <li><a href="#"></a></li>
-                   <li><a href="#"></a></li>
-                   <li><a href="#"></a></li>
+                   <li ng-repeat="company in companies">
+                      <a href='{{company.url}}' target="_blank">
+                        <img src='{{company.img}}' alt="techcombank">
+                      </a>
+                    </li>
                </ul>
            </div>
         </div>

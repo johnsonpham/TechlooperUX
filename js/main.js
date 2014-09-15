@@ -49,7 +49,11 @@ app.controller('openCompaniesBar', ['$scope', function ($scope) {
 app.controller('openKeyboardShortcuts', ['$scope', function ($scope) {
 	var key = $('.keyboard');
 	key.on('click', function(){
-		$('.keyboard-shortcuts-items').slideToggle();
+    if ($(".keyboard-shortcuts-items:first").is(":hidden")) {
+          $(".keyboard-shortcuts-items").slideDown("slow");
+      } else {
+          $(".keyboard-shortcuts-items").hide();
+      }
 	});
 }])
 
@@ -62,10 +66,19 @@ app.controller('settingStyle', ['$scope', function ($scope) {
       });
     }).mouseleave(function(){
       set.find('ul.setting-items').css("display","none");
-      $('.keyboard-shortcuts-items').css("display","none");
       set.stop().animate({
         width:'28px'
       });
+      $(".keyboard-shortcuts-items").hide();
     });
 }])
 
+app.controller("loadCompanies", function($scope, $http) {
+  $http.get('data/companies.json').
+    success(function(data, status, headers, config) {
+      $scope.companies = data;
+    }).
+    error(function(data, status, headers, config) {
+      // log error
+    });
+});

@@ -26,11 +26,11 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23580787" vertical-offset="168" max-vertical-offset="855">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.23580787" vertical-offset="183" max-vertical-offset="870">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
-                <marker date="1410490393000" expanded="true" signature="1290:1443" placeholder="..." />
-                <marker date="1410490393000" expanded="true" signature="1383:1411" placeholder="..." />
+                <marker date="1410512112000" expanded="true" signature="1291:1444" placeholder="..." />
+                <marker date="1410512112000" expanded="true" signature="1384:1412" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -45,6 +45,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/index.html" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="49" />
@@ -239,11 +246,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23580787" vertical-offset="168" max-vertical-offset="855">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.23580787" vertical-offset="183" max-vertical-offset="870">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
-            <marker date="1410490393000" expanded="true" signature="1290:1443" placeholder="..." />
-            <marker date="1410490393000" expanded="true" signature="1383:1411" placeholder="..." />
+            <marker date="1410512112000" expanded="true" signature="1291:1444" placeholder="..." />
+            <marker date="1410512112000" expanded="true" signature="1384:1412" placeholder="..." />
           </folding>
         </state>
       </provider>

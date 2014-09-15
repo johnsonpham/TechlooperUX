@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation" ng-controller="loadKeyboard">
     <div class="container">
         <div class="col-md-4 setting-block" ng-controller="settingStyle">
             <div class="setting-content" ng-controller="openKeyboardShortcuts">
@@ -9,7 +9,7 @@
                     <li><i class="fa fa-pie-chart" title="Pie Chart"></i></li>
                     <li><i class="fa fa-bubble-chart" title="Bubble Chart"></i></li>
                     <li class="keyboard"><i class="fa fa-keyboard-o" title="Keyboard Shortcuts"></i>
-                         <div class="keyboard-shortcuts-items" ng-controller="loadKeyboard">
+                         <div class="keyboard-shortcuts-items">
                              <ul>
                                  <li ng-repeat="key in keyList">
                                     <span>{{key.name}}</span>{{key.keyShort}}
@@ -25,7 +25,7 @@
             <div class="logo">
                 <h1><a href="#/"><img src="images/logo.png" alt="Career Analytics. Open Source. Awesome!"></a></h1>
             </div>
-            <p class="tagline">{{tagline}}</p>
+           <!--  <p class="tagline">{{tagline}}</p> -->
         </div>
         <div class="col-md-4 search-bar"></div>
     </div>
