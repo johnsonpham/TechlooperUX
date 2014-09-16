@@ -1,487 +1,1326 @@
 var app = angular
-  .module('app', [
-    'ngRoute'
-  ])
+    .module('app', [
+        'ngRoute'
+    ])
 
-app.config(['$routeProvider', function ($routeProvider) {
-  $routeProvider
-  .when('/',{
-      templateUrl:'partials/home.html',
-      controller:'PageCtrl'
-  })
-}]);
+app.config(['$routeProvider',
+    function($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'partials/home.html',
+                controller: 'PageCtrl'
+            })
+    }
+]);
 
 app.controller("loadKeyboard", function($scope, $http) {
-  $http.get('data/keyboardshortcuts.json').
+    $http.get('data/keyboardshortcuts.json').
     success(function(data, status, headers, config) {
-      $scope.keyList = data;
+        $scope.keyList = data;
     }).
     error(function(data, status, headers, config) {
-      // log error
+        // log error
     });
 });
 
-app.controller('PageCtrl', ['$scope', function ($scope) {
- 	$scope.tagline ='Career Analytics. Open Source. Awesome!';
-}]);
+app.controller('PageCtrl', ['$scope',
+    function($scope) {
+        $scope.tagline = 'Career Analytics. Open Source. Awesome!';
+    }
+]);
 
-app.controller('openCompaniesBar', ['$scope', function ($scope) {
-	var cp = $('.companies-bar'),
-	list = $('.companies-list');
-	cp.click(function(){
-		var ic = $(this).find('i');
-		if(ic.hasClass('fa-arrow-up')){
-			ic.removeClass('fa-arrow-up').addClass('fa-arrow-down');
-			list.animate({
-				height:'120px',
-        padding:'10px'
-			});
-		}else{
-			ic.removeClass('fa-arrow-down').addClass('fa-arrow-up');
-			list.animate({
-				height:'0',
-        padding:'5px 10px'
-			});
-		}
-	});
-}])
+app.controller('openCompaniesBar', ['$scope',
+    function($scope) {
+        var cp = $('.companies-bar'),
+            list = $('.companies-list');
+        cp.click(function() {
+            var ic = $(this).find('i');
+            if (ic.hasClass('fa-arrow-up')) {
+                ic.removeClass('fa-arrow-up').addClass('fa-arrow-down');
+                list.animate({
+                    height: '120px',
+                    padding: '10px'
+                });
+            } else {
+                ic.removeClass('fa-arrow-down').addClass('fa-arrow-up');
+                list.animate({
+                    height: '0',
+                    padding: '5px 10px'
+                });
+            }
+        });
+    }
+])
 
-app.controller('openKeyboardShortcuts', ['$scope', function ($scope) {
-	var key = $('.keyboard');
-	key.on('click', function(){
-    if ($(".keyboard-shortcuts-items:first").is(":hidden")) {
-          $(".keyboard-shortcuts-items").slideDown("slow");
-      } else {
-          $(".keyboard-shortcuts-items").hide();
-      }
-	});
-}])
+app.controller('openKeyboardShortcuts', ['$scope',
+    function($scope) {
+        var key = $('.keyboard');
+        key.on('click', function() {
+            if ($(".keyboard-shortcuts-items:first").is(":hidden")) {
+                $(".keyboard-shortcuts-items").slideDown("slow");
+            } else {
+                $(".keyboard-shortcuts-items").hide();
+            }
+        });
+    }
+])
 
-app.controller('settingStyle', ['$scope', function ($scope) {
-	var set = $('.setting-content');
-    set.on('click',function(){
-      set.find('ul.setting-items').css("display","block");
-      set.stop().animate({
-        width:'125'
-      });
-    }).mouseleave(function(){
-      set.find('ul.setting-items').css("display","none");
-      set.stop().animate({
-        width:'28px'
-      });
-      $(".keyboard-shortcuts-items").hide();
-    });
-}])
+app.controller('settingStyle', ['$scope',
+    function($scope) {
+        var set = $('.setting-content');
+        set.on('click', function() {
+            set.find('ul.setting-items').css("display", "block");
+            set.stop().animate({
+                width: '125'
+            });
+        }).mouseleave(function() {
+            set.find('ul.setting-items').css("display", "none");
+            set.stop().animate({
+                width: '28px'
+            });
+            $(".keyboard-shortcuts-items").hide();
+        });
+    }
+])
 
 app.controller("loadCompanies", function($scope, $http) {
-  $http.get('data/companies.json').
+    $http.get('data/companies.json').
     success(function(data, status, headers, config) {
-      $scope.companies = data;
+        $scope.companies = data;
     }).
     error(function(data, status, headers, config) {
-      // log error
+        // log error
     });
 });
 
+app.controller("loadTech", function($scope, $http) {
+    $http.get('data/techlist.json').
+    success(function(data, status, headers, config) {
+        $scope.techlist = data;
+    }).
+    error(function(data, status, headers, config) {
+        // log error
+    });
+});
 
-app.controller('bubble-ctrl', ['$scope', function ($scope) {
-  var dotnet_locations = new Array();
-         // left, top
-         dotnet_locations[0] = new Array('-190px', '0'); // .net
-         dotnet_locations[1] = new Array('-180px', '210px'); // pm
-         dotnet_locations[2] = new Array('250px', '200px'); // php
-         dotnet_locations[3] = new Array('50px', '250px'); // java
+app.controller("setPercent", function($scope, $http) {});
 
+app.controller('bubble-ctrl', ['$scope',
+    function($scope) {
 
-         var php_locations = new Array();
-         // left, top
-         php_locations[0] = new Array('-190px', '165px'); // design
-         php_locations[1] = new Array('-190px', '65px'); // pm
-         php_locations[2] = new Array('280px', '210px'); // php
-         php_locations[3] = new Array('280px', '210px'); // java
-
-
-         var pm_locations = new Array();
-         // left, top
-         pm_locations[0] = new Array('-190px', '-50px'); // .net
-         pm_locations[1] = new Array('-190px', '220px'); // PM
-         pm_locations[2] = new Array('-190px', '130px'); // php
-         pm_locations[3] = new Array('-100px', '180px'); // java
-
-
-         var php_locations = new Array();
-         // left, top
-         php_locations[0] = new Array('475px', '210px'); // .net
-         php_locations[1] = new Array('-160px', '210px'); // pm
-         php_locations[2] = new Array('-50px', '-10px'); // php
-         php_locations[3] = new Array('-100px', '-90px'); // java
-
-         var java_locations = new Array();
-         // left, top
-         java_locations[0] = new Array('475px', '210px'); // .net
-         java_locations[1] = new Array('-160px', '210px'); // pm
-         java_locations[2] = new Array('-50px', '-10px'); // php
-         java_locations[3] = new Array('-80px', '-15px'); // java
+        var dotnet_locations = new Array();
+        // left, top
+        dotnet_locations[0] = new Array('0', '200px');
+        dotnet_locations[1] = new Array('0', '200px');
+        dotnet_locations[2] = new Array('0', '200px');
+        dotnet_locations[3] = new Array('0', '200px');
+        dotnet_locations[4] = new Array('0', '200px');
+        dotnet_locations[5] = new Array('0', '200px');
+        dotnet_locations[6] = new Array('0', '200px');
+        dotnet_locations[7] = new Array('0', '200px');
+        dotnet_locations[8] = new Array('0', '200px');
 
 
-
-         $('.circle').click(function(e) {
-             e.preventDefault();
-
-             var circle = $(this);
-             var circle_id = this.id;
-
-             if (!circle.hasClass('active')) {
-                 $(this).children(':not("img")').hide();
-
-                 $('.inactive span, .inactive .intro').hide(); // hides the intro on the main circle before it is animated away
-
-                 // move the new circle and increase size to center
-                 $('#' + circle_id).addClass('active').removeClass('small').animate({
-                     'top': '30px',
-                     'left': '-50px'
-                 }).children('img').animate({
-                     'width': 320,
-                     'height': 320
-                 }, {
-                     duration: '4000',
-                     easing: 'easeOutQuad'
-                 });
-
-                 // add the title and content once the circle has resized itself
-                 setTimeout((function() {
-                     $('#' + circle_id).children(':not("img")').slideDown('fast');
-                 }), 500);
+        var php_locations = new Array();
+        // left, top
+        php_locations[0] = new Array('-180px', '90px');
+        php_locations[1] = new Array('-180px', '90px');
+        php_locations[2] = new Array('-180px', '90px');
+        php_locations[3] = new Array('-180px', '90px');
+        php_locations[4] = new Array('-180px', '90px');
+        php_locations[5] = new Array('-180px', '90px');
+        php_locations[6] = new Array('-180px', '90px');
+        php_locations[7] = new Array('-180px', '90px');
+        php_locations[8] = new Array('-180px', '90px');
 
 
-                 /*
-                  * .Net is active
-                  **/
-                 if (circle_id == 'dotnetTech') {
-                     $('#qctech').animate({
-                         'top': dotnet_locations[0][1],
-                         'left': dotnet_locations[0][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
-
-                     $('#pmTech').animate({
-                         'top': dotnet_locations[1][1],
-                         'left': dotnet_locations[1][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
-
-                     $('#phpTech').animate({
-                         'top': dotnet_locations[2][1],
-                         'left': dotnet_locations[2][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
-
-                     $('#javaTech').animate({
-                         'top': dotnet_locations[2][1],
-                         'left': dotnet_locations[2][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
-
-                 } // end if circle id = .Net
+        var java_locations = new Array();
+        // left, top
+        java_locations[0] = new Array('25px', '10px');
+        java_locations[1] = new Array('25px', '10px');
+        java_locations[2] = new Array('25px', '10px');
+        java_locations[3] = new Array('25px', '10px');
+        java_locations[4] = new Array('25px', '10px');
+        java_locations[5] = new Array('25px', '10px');
+        java_locations[6] = new Array('25px', '10px');
+        java_locations[7] = new Array('25px', '10px');
+        java_locations[8] = new Array('25px', '10px');
 
 
-                 /*
-                  * QC is active
-                  **/
-                 if (circle_id == 'qcTech') {
-                     $('#dotnettech').animate({
-                         'top': php_locations[0][1],
-                         'left': php_locations[0][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+        var qc_locations = new Array();
+        // left, top
+        qc_locations[0] = new Array('-210px', '210px');
+        qc_locations[1] = new Array('-210px', '210px');
+        qc_locations[2] = new Array('-210px', '210px');
+        qc_locations[3] = new Array('-210px', '210px');
+        qc_locations[4] = new Array('-210px', '210px');
+        qc_locations[5] = new Array('-210px', '210px');
+        qc_locations[6] = new Array('-210px', '210px');
+        qc_locations[7] = new Array('-210px', '210px');
+        qc_locations[8] = new Array('-210px', '210px');
 
-                     $('#pmTech').animate({
-                         'top': php_locations[1][1],
-                         'left': php_locations[1][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+        var pm_locations = new Array();
+        // left, top
+        pm_locations[0] = new Array('200px', '160px');
+        pm_locations[1] = new Array('200px', '160px');
+        pm_locations[2] = new Array('200px', '160px');
+        pm_locations[3] = new Array('200px', '160px');
+        pm_locations[4] = new Array('200px', '160px');
+        pm_locations[5] = new Array('200px', '160px');
+        pm_locations[6] = new Array('200px', '160px');
+        pm_locations[7] = new Array('200px', '160px');
+        pm_locations[8] = new Array('200px', '160px');
 
-                     $('#phpTech').animate({
-                         'top': php_locations[2][1],
-                         'left': php_locations[2][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+        var python_locations = new Array();
+        // left, top
+        python_locations[0] = new Array('120px', '250px');
+        python_locations[1] = new Array('120px', '250px');
+        python_locations[2] = new Array('120px', '250px');
+        python_locations[3] = new Array('120px', '250px');
+        python_locations[4] = new Array('120px', '250px');
+        python_locations[5] = new Array('120px', '250px');
+        python_locations[6] = new Array('120px', '250px');
+        python_locations[7] = new Array('120px', '250px');
+        python_locations[8] = new Array('120px', '250px');
 
-                     $('#javaTech').animate({
-                         'top': php_locations[2][1],
-                         'left': php_locations[2][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+        var ruby_locations = new Array();
+        // left, top
+        ruby_locations[0] = new Array('100px', '190px');
+        ruby_locations[1] = new Array('100px', '190px');
+        ruby_locations[2] = new Array('100px', '190px');
+        ruby_locations[3] = new Array('100px', '190px');
+        ruby_locations[4] = new Array('100px', '190px');
+        ruby_locations[5] = new Array('100px', '190px');
+        ruby_locations[6] = new Array('100px', '190px');
+        ruby_locations[7] = new Array('100px', '190px');
+        ruby_locations[8] = new Array('100px', '190px');
 
-                 } // end if circle id = QC
+        var ba_locations = new Array();
+        // left, top
+        ba_locations[0] = new Array('250px', '200px');
+        ba_locations[1] = new Array('250px', '200px');
+        ba_locations[2] = new Array('250px', '200px');
+        ba_locations[3] = new Array('250px', '200px');
+        ba_locations[4] = new Array('250px', '200px');
+        ba_locations[5] = new Array('250px', '200px');
+        ba_locations[6] = new Array('250px', '200px');
+        ba_locations[7] = new Array('250px', '200px');
+        ba_locations[8] = new Array('250px', '200px');
 
+        var dba_locations = new Array();
+        // left, top
+        dba_locations[0] = new Array('100px', '190px');
+        dba_locations[1] = new Array('100px', '190px');
+        dba_locations[2] = new Array('100px', '190px');
+        dba_locations[3] = new Array('100px', '190px');
+        dba_locations[4] = new Array('100px', '190px');
+        dba_locations[5] = new Array('100px', '190px');
+        dba_locations[6] = new Array('100px', '190px');
+        dba_locations[7] = new Array('100px', '190px');
+        dba_locations[8] = new Array('100px', '190px');
 
+        $('.circle').click(function(e) {
+            e.preventDefault();
 
-                 /*
-                  * PM is active
-                  **/
-                 if (circle_id == 'pmTech') {
-                     $('#qcTech').animate({
-                         'top': pm_locations[0][1],
-                         'left': pm_locations[0][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+            var circle = $(this);
+            var circle_id = this.id;
 
-                     $('#phpTech').animate({
-                         'top': pm_locations[1][1],
-                         'left': pm_locations[1][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+            if (!circle.hasClass('active')) {
+                $(this).children(':not(".circle-content")').hide();
 
-                     $('#JavaTech').animate({
-                         'top': pm_locations[2][1],
-                         'left': pm_locations[2][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+                $('.inactive span, .inactive .intro').hide(); // hides the intro on the main circle before it is animated away
 
-                     $('#donetTech').animate({
-                         'top': pm_locations[2][1],
-                         'left': pm_locations[2][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+                // move the new circle and increase size to center
+                $('#' + circle_id).addClass('active').removeClass('small').animate({
+                    'top': '30px',
+                    'left': '-50px'
+                }).children('.circle-content').animate({
+                    'width': 320,
+                    'height': 320
+                }, {
+                    duration: '4000',
+                    easing: 'easeOutQuad'
+                });
 
-                 } // end if circle id = PM
+                // add the title and content once the circle has resized itself
+                setTimeout((function() {
+                    $('#' + circle_id).children(':not(".circle-content")').slideDown('fast');
+                }), 500);
 
 
+                /*
+                 * 1 .Net is active
+                 **/
+                if (circle_id == 'dotnetTech') {
+                    $('#qctech').animate({
+                        'top': qc_locations[0][1],
+                        'left': qc_locations[0][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
 
-                 /*
-                  * PHP is active
-                  **/
-                 if (circle_id == 'phpTech') {
-                     $('#pmTech').animate({
-                         'top': php_locations[0][1],
-                         'left': php_locations[0][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+                    $('#pmTech').animate({
+                        'top': pm_locations[1][1],
+                        'left': pm_locations[1][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
 
-                     $('#qcTech').animate({
-                         'top': php_locations[1][1],
-                         'left': php_locations[1][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+                    $('#phpTech').animate({
+                        'top': php_locations[2][1],
+                        'left': php_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
 
-                     $('#javaTech').animate({
-                         'top': php_locations[2][1],
-                         'left': php_locations[2][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
-                     $('#dotnetTech').animate({
-                         'top': php_locations[2][1],
-                         'left': php_locations[2][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+                    $('#javaTech').animate({
+                        'top': java_locations[2][1],
+                        'left': java_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
 
-                 } // end if circle id = PHP
+                    $('#rubyTech').animate({
+                        'top': ruby_locations[2][1],
+                        'left': ruby_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
 
+
+                    $('#pythonTech').animate({
+                        'top': python_locations[2][1],
+                        'left': python_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dbaTech').animate({
+                        'top': dba_locations[2][1],
+                        'left': dba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#baTech').animate({
+                        'top': ba_locations[2][1],
+                        'left': ba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+                } // end if circle id = .Net
+
+                /*
+                 * 2 Java is active
+                 **/
                 if (circle_id == 'javaTech') {
-                     $('#qcTech').animate({
-                         'top': php_locations[0][1],
-                         'left': php_locations[0][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+                    $('#qctech').animate({
+                        'top': qc_locations[0][1],
+                        'left': qc_locations[0][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
 
-                     $('#pmTech').animate({
-                         'top': php_locations[1][1],
-                         'left': php_locations[1][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+                    $('#pmTech').animate({
+                        'top': pm_locations[1][1],
+                        'left': pm_locations[1][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
 
-                     $('#phpTech').animate({
-                         'top': php_locations[2][1],
-                         'left': php_locations[2][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+                    $('#phpTech').animate({
+                        'top': php_locations[2][1],
+                        'left': php_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
 
-                     $('#dotnettech').animate({
-                         'top': php_locations[0][1],
-                         'left': php_locations[0][0]
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     }).addClass('small').removeClass('active').children('img').animate({
-                         'width': 125,
-                         'height': 125
-                     }, {
-                         duration: '4000',
-                         easing: 'easeOutQuad'
-                     });
+                    $('#dotnetTech').animate({
+                        'top': dotnet_locations[2][1],
+                        'left': dotnet_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
 
-                 } // end if circle id = java
-
-                 $('.small .intro').hide();
-
-
-                 //remove the inactive class and slide the title back in
-                 setTimeout((function() {
-                     $('#box div.inactive').removeClass('inactive').children('span').fadeIn('fast');
-                 }), 300);
-
-
-
-                 // //disable the companion link from starting the animation
-                 // $('a.active').removeClass('active');
-                 // //console.log(this.tagName);
-                 // $('a#' + circle_id).addClass('active');
+                    $('#rubyTech').animate({
+                        'top': ruby_locations[2][1],
+                        'left': ruby_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
 
 
-             } // end if($(this).hasClass('active'))
+                    $('#pythonTech').animate({
+                        'top': python_locations[2][1],
+                        'left': python_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
 
-         });
-}])
+                    $('#dbaTech').animate({
+                        'top': dba_locations[2][1],
+                        'left': dba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#baTech').animate({
+                        'top': ba_locations[2][1],
+                        'left': ba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+                } // end if circle id = Java
+                
+                /*
+                 * 3 PHP is active
+                 **/
+                if (circle_id == 'phpTech') {
+                    $('#qctech').animate({
+                        'top': qc_locations[0][1],
+                        'left': qc_locations[0][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#pmTech').animate({
+                        'top': pm_locations[1][1],
+                        'left': pm_locations[1][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#javaTech').animate({
+                        'top': java_locations[2][1],
+                        'left': java_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dotnetTech').animate({
+                        'top': dotnet_locations[2][1],
+                        'left': dotnet_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#rubyTech').animate({
+                        'top': ruby_locations[2][1],
+                        'left': ruby_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+
+                    $('#pythonTech').animate({
+                        'top': python_locations[2][1],
+                        'left': python_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dbaTech').animate({
+                        'top': dba_locations[2][1],
+                        'left': dba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#baTech').animate({
+                        'top': ba_locations[2][1],
+                        'left': ba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+                } // end if circle id = PHP
+
+                /*
+                 * 4 Ruby is active
+                 **/
+                if (circle_id == 'rubyTech') {
+                    $('#qctech').animate({
+                        'top': qc_locations[0][1],
+                        'left': qc_locations[0][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#pmTech').animate({
+                        'top': pm_locations[1][1],
+                        'left': pm_locations[1][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#javaTech').animate({
+                        'top': java_locations[2][1],
+                        'left': java_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dotnetTech').animate({
+                        'top': dotnet_locations[2][1],
+                        'left': dotnet_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#phpTech').animate({
+                        'top': php_locations[2][1],
+                        'left': php_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+
+                    $('#pythonTech').animate({
+                        'top': python_locations[2][1],
+                        'left': python_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dbaTech').animate({
+                        'top': dba_locations[2][1],
+                        'left': dba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#baTech').animate({
+                        'top': ba_locations[2][1],
+                        'left': ba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+                } // end if circle id = Ruby
+
+                /*
+                 * 5 Python is active
+                 **/
+                if (circle_id == 'pythonTech') {
+                    $('#qctech').animate({
+                        'top': qc_locations[0][1],
+                        'left': qc_locations[0][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#pmTech').animate({
+                        'top': pm_locations[1][1],
+                        'left': pm_locations[1][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#javaTech').animate({
+                        'top': java_locations[2][1],
+                        'left': java_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dotnetTech').animate({
+                        'top': dotnet_locations[2][1],
+                        'left': dotnet_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#rubyTech').animate({
+                        'top': ruby_locations[2][1],
+                        'left': ruby_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+
+                    $('#phpTech').animate({
+                        'top': php_locations[2][1],
+                        'left': php_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dbaTech').animate({
+                        'top': dba_locations[2][1],
+                        'left': dba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#baTech').animate({
+                        'top': ba_locations[2][1],
+                        'left': ba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+                } // end if circle id = Python
+
+                /*
+                 * 6 Project Manager is active
+                 **/
+                if (circle_id == 'pmTech') {
+                    $('#qctech').animate({
+                        'top': qc_locations[0][1],
+                        'left': qc_locations[0][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#pythonTech').animate({
+                        'top': python_locations[1][1],
+                        'left': python_locations[1][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#javaTech').animate({
+                        'top': java_locations[2][1],
+                        'left': java_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dotnetTech').animate({
+                        'top': dotnet_locations[2][1],
+                        'left': dotnet_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#rubyTech').animate({
+                        'top': ruby_locations[2][1],
+                        'left': ruby_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+
+                    $('#phpTech').animate({
+                        'top': php_locations[2][1],
+                        'left': php_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dbaTech').animate({
+                        'top': dba_locations[2][1],
+                        'left': dba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#baTech').animate({
+                        'top': ba_locations[2][1],
+                        'left': ba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+                } // end if circle id = Project Manager
+
+                /*
+                 * 7 Quanity Control is active
+                 **/
+                if (circle_id == 'qcTech') {
+                    $('#pmtech').animate({
+                        'top': pm_locations[0][1],
+                        'left': pm_locations[0][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#pythonTech').animate({
+                        'top': python_locations[1][1],
+                        'left': python_locations[1][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#javaTech').animate({
+                        'top': java_locations[2][1],
+                        'left': java_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dotnetTech').animate({
+                        'top': dotnet_locations[2][1],
+                        'left': dotnet_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#rubyTech').animate({
+                        'top': ruby_locations[2][1],
+                        'left': ruby_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+
+                    $('#phpTech').animate({
+                        'top': php_locations[2][1],
+                        'left': php_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dbaTech').animate({
+                        'top': dba_locations[2][1],
+                        'left': dba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#baTech').animate({
+                        'top': ba_locations[2][1],
+                        'left': ba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+                } // end if circle id = Quanity Control
+
+                 /*
+                 * 8 DBA is active
+                 **/
+                if (circle_id == 'dbaTech') {
+                    $('#pmtech').animate({
+                        'top': pm_locations[0][1],
+                        'left': pm_locations[0][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#pythonTech').animate({
+                        'top': python_locations[1][1],
+                        'left': python_locations[1][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#javaTech').animate({
+                        'top': java_locations[2][1],
+                        'left': java_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dotnetTech').animate({
+                        'top': dotnet_locations[2][1],
+                        'left': dotnet_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#rubyTech').animate({
+                        'top': ruby_locations[2][1],
+                        'left': ruby_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+
+                    $('#phpTech').animate({
+                        'top': php_locations[2][1],
+                        'left': php_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#qcTech').animate({
+                        'top': qc_locations[2][1],
+                        'left': qc_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#baTech').animate({
+                        'top': ba_locations[2][1],
+                        'left': ba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+                } // end if circle id = Quanity Control
+
+                /*
+                 * 9 Analytics Business is active
+                 **/
+                if (circle_id == 'baTech') {
+                    $('#pmtech').animate({
+                        'top': pm_locations[0][1],
+                        'left': pm_locations[0][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#pythonTech').animate({
+                        'top': python_locations[1][1],
+                        'left': python_locations[1][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#javaTech').animate({
+                        'top': java_locations[2][1],
+                        'left': java_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dotnetTech').animate({
+                        'top': dotnet_locations[2][1],
+                        'left': dotnet_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#rubyTech').animate({
+                        'top': ruby_locations[2][1],
+                        'left': ruby_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+
+                    $('#phpTech').animate({
+                        'top': php_locations[2][1],
+                        'left': php_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#qcTech').animate({
+                        'top': qc_locations[2][1],
+                        'left': qc_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+
+                    $('#dbaTech').animate({
+                        'top': dba_locations[2][1],
+                        'left': dba_locations[2][0]
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    }).addClass('small').removeClass('active').children('.circle-content').animate({
+                        'width': 125,
+                        'height': 125
+                    }, {
+                        duration: '4000',
+                        easing: 'easeOutQuad'
+                    });
+                } // end if circle id = Analytics Business
+
+                $('.small .intro').hide();
+
+
+                //remove the inactive class and slide the title back in
+                setTimeout((function() {
+                    $('#box div.inactive').removeClass('inactive').children('span').fadeIn('fast');
+                }), 300);
+
+
+            } // end if($(this).hasClass('active'))
+
+        });
+    }
+])
