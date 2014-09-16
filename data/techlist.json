@@ -1,15 +1,15 @@
 [
 	{
 		"idName":"javaTech",
-		"jobs": 190,
-		"percent":"twentypc",
+		"jobs": 100,
+		"percent":"tenpc",
 		"techName":"Java",
 		"color":"redColor"
 	},
 	{
 		"idName":"phpTech",
-		"jobs": 300,
-		"percent":"twentyfivepc",
+		"jobs": 200,
+		"percent":"twentypc",
 		"techName":"PHP",
 		"color":"oliveColor"
 	},
@@ -29,15 +29,15 @@
 	},
 	{
 		"idName":"pythonTech",
-		"jobs": 230,
-		"percent":"twentyfivepc",
+		"jobs": 180,
+		"percent":"twentypc",
 		"techName":"Python",
 		"color":"blueColor"
 	},
 	{
 		"idName":"pmTech",
-		"jobs":300,
-		"percent":"twentyfivepc",
+		"jobs":50,
+		"percent":"fivepc",
 		"techName":"PM",
 		"color":"greenColor"
 	},

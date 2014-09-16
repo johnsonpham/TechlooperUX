@@ -51,7 +51,7 @@
     display: block;
     clear: both;
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 400;
 }
 #box #pmTech span {
     top:-68%;
@@ -106,7 +106,7 @@
 #box #phpTech {
     position:absolute;
     top:90px;
-    left:-180px;
+    left:-120px;
     z-index:2;
 }
 #box #qcTech {
@@ -117,8 +117,8 @@
 }
 #box #pmTech {
     position:absolute;
-    top:160px;
-    left:200px;
+    top:10px;
+    left:-80px;
     z-index:4;
 }
 #box #dotnetTech {
@@ -135,27 +135,53 @@
 }
 #box #baTech {
     position:absolute;
-    top:200px;
+    top:150px;
     left:250px;
     z-index:7;
 }
 #box #rubyTech {
     position:absolute;
-    top:190px;
-    left:100px;
+    top:90px;
+    left:50px;
     z-index:8;
 }
 #box #pythonTech {
     position:absolute;
     top:250px;
-    left:120px;
+    left:10px;
     z-index:9;
 }
-
+#box #dbTech {
+    position:absolute;
+    top:250px;
+    left:180px;
+    z-index:9;
+}
+#box .fivepc,
+#box .fivepc .circle-content{
+    width:50px;
+    height:50px; 
+}
+#box .fivepc span{
+    font-size: 10px;
+    line-height: 5px;
+    top: -70% !important;
+}
+#box .fivepc strong{
+    font-size: 12px;
+}
 #box .tenpc,
 #box .tenpc .circle-content{
     width:100px;
     height:100px; 
+}
+#box .tenpc span{
+    font-size: 15px;
+    line-height: 16px;
+    top: -65% !important;
+}
+#box .tenpc strong{
+    font-size: 20px;
 }
 #box .fifteenpc,
 #box .fifteenpc .circle-content{
