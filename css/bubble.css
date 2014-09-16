@@ -1,3 +1,4 @@
+/* Who We Are Styles */
  #left {
     float:left;
     width:555px;
@@ -29,11 +30,15 @@
     left:120px;
 }
 #box .circle {
+    -webkit-background-size: 50%;
+    -moz-background-size: 50%;
+    -o-background-size: cover;
+    background-size: cover;
     position:relative;
     cursor:pointer;
+    width:125px;
+    height:125px;
     text-align:center;
-    width: 1000px;
-    height: 1000px;
 }
 #box .active {
     width:340px;
@@ -42,140 +47,49 @@
 }
 #box .circle span {
     width:125px;
-    font-size:18px;
+    font-size:0.8em;
     position:relative;
-    top:-70%;
+    top:-55%;
     color:#ffffff;
+    /*position:absolute;
+    top:45%;
+    left:30%;
+    color:#ffffff;
+    */
 }
-#box .circle strong{
-    display: block;
-    clear: both;
-    font-size: 24px;
-    font-weight: 300;
-}
-#box #pmTech span {
+#box #pm span {
     top:-68%;
 }
 #box .active span {
     top:-68%;
 }
-#box .circle .circle-content {
-    background: #f00;
-    width: 1000px;
-    height: 1000px;
-    border-radius: 50%;
-    width:150px;
-    height:150px;
+#box .circle img {
+    width:170px;
+    height:170px;
 }
-#box .circle .redColor{
-    background: #f00;
-}
-#box .circle .blueColor{
-    background: #106da4;
-}
-#box .circle .yellowColor{
-    background: #d7c500;
-}
-#box .circle .pinkColor{
-    background: #cc21a0;
-}
-#box .circle .greenColor{
-    background: #11a06c;
-}
-#box .circle .orangeColor{
-    background: #d26e03;
-}
-#box .circle .lightSalmonColor{
-    background: #ffa07a;
-}
-#box .circle .mediumVioletRedColor{
-    background: #C71585;
-}
-#box .circle .oliveColor{
-    background: #808000;
-}
-#box .circle .saddleBrownColor{
-    background: #8B4513;
-}
-#box #javaTech {
+#box #design {
     position:absolute;
     top:10px;
     left:25px;
-    z-index:1;
-}
-#box #phpTech {
-    position:absolute;
-    top:90px;
-    left:-180px;
-    z-index:2;
-}
-#box #qcTech {
-    position:absolute;
-    top:210px;
-    left:-210px;
-    z-index:3;
-}
-#box #pmTech {
-    position:absolute;
-    top:160px;
-    left:200px;
-    z-index:4;
-}
-#box #dotnetTech {
-    position:absolute;
-    top:0;
-    left:200px;
     z-index:5;
 }
-#box #dbaTech {
+#box #interactive {
     position:absolute;
-    top:190px;
-    left:100px;
-    z-index:6;
+    top:90px;
+    left:-65px;
+    z-index:3;
 }
-#box #baTech {
+#box #qa {
     position:absolute;
-    top:200px;
-    left:250px;
-    z-index:7;
+    top:178px;
+    left:25px;
+    z-index:4;
 }
-#box #rubyTech {
+#box #pm {
     position:absolute;
-    top:190px;
-    left:100px;
-    z-index:8;
-}
-#box #pythonTech {
-    position:absolute;
-    top:250px;
-    left:120px;
-    z-index:9;
-}
-
-#box .tenpc,
-#box .tenpc .circle-content{
-    width:100px;
-    height:100px; 
-}
-#box .fifteenpc,
-#box .fifteenpc .circle-content{
-    width:150px;
-    height:150px; 
-}
-#box .twentypc,
-#box .twentypc .circle-content{
-    width:200px;
-    height:200px; 
-}
-#box .twentyfivepc,
-#box .twentyfivepc .circle-content{
-    width:250px;
-    height:250px; 
-}
-#box .thirtypc,
-#box .thirtypc .circle-content{
-    width:300px;
-    height:300px; 
+    top:90px;
+    left:102px;
+    z-index:2;
 }
 #box .intro {
     display:none;
@@ -193,6 +107,7 @@
 #box #qa.circle span {
     top:-100px;
     left:32px;
+    *left:30px;
     display:block;
     width:100px;
     line-height: 18px;

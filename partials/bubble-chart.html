@@ -1,16 +1,38 @@
-<div class="bubble-chart-block" ng-controller="loadTech">
-    <div id="box" class="bubble-chart-container" ng-controller="setPercent">
-        <div ng-repeat="tech in techlist" ng-controller="bubble-ctrl">
-            <div id='{{tech.idName}}' class="circle {{tech.percent}}">
-                <div class="circle-content {{tech.color}}"></div>
-                <span><strong>{{tech.jobs}}</strong>{{tech.techName}}</span>
-                <!-- <div class="intro">
-                    <ul>
-                        <li ng-repeat = "skill in tech.skillList">
-                            {{skill.skillName}}
-                        </li>
-                    </ul>
-                </div> -->
+<div class="bubble-chart-block" ng-controller="bubble-ctrl">
+    <div id="box" class="bubble-chart-container">
+        <div id="javaTech" class="circle">
+            <img src="images/java.png" alt="Design" title="Design">
+            <span>Java</span>
+            <div class="intro">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+            </div>
+        </div>
+        <div id="dotnetTech" class="circle">
+            <img src="images/dotnet.png" alt="Quality Assurance" title="Quality Assurance">
+            <span>.Net</span>
+            <div class="intro">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+            </div>
+        </div>
+        <div id="pmTech" class="circle">
+            <img src="images/pm.png" alt="Project Management" title="Project Management">
+            <span>PM</span>
+            <div class="intro">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+            </div>
+        </div>
+        <div id="phpTech" class="circle">
+            <img src="images/php.png" alt="Interactive" title="Interactive">
+            <span>PHP</span>
+            <div class="intro">
+                Our full-service, in-house interactive team produces creative solutions that combine effective design with user-friendliness.
+            </div>
+        </div>
+        <div id="qcTech" class="circle">
+            <img src="images/qc.png" alt="Interactive" title="Interactive">
+            <span>PM</span>
+            <div class="intro">
+                Our full-service, in-house interactive team produces creative solutions that combine effective design with user-friendliness.
             </div>
         </div>
     </div>
