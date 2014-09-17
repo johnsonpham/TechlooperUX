@@ -49,7 +49,7 @@
 		"color":"pinkColor"
 	},
 	{
-		"idName":"dbTech",
+		"idName":"dbaTech",
 		"jobs":100,
 		"percent":"tenpc",
 		"techName":"DB",
@@ -60,6 +60,6 @@
 		"jobs":100,
 		"percent":"tenpc",
 		"techName":"BA",
-		"color":"mediumVioletRedColor"
+		"color":"indigoColor"
 	}
 ]
