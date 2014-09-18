@@ -1,4 +1,4 @@
-<div class="bubble-chart-block" ng-controller="loadTech">
+<div ng-controller="loadTech">
     <div id="box" class="bubble-chart-container" ng-controller="setPercent">
         <div ng-repeat="tech in techlist" ng-controller="bubble-ctrl">
             <div id='{{tech.idName}}' class="circle {{tech.percent}}">

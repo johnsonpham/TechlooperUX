@@ -112,7 +112,7 @@ app.controller('bubble-ctrl', ['$scope',
         //top, left
         dotnet_locations[0] = new Array('370px', '110px'); // java
         dotnet_locations[1] = new Array('100px', '250px'); // .net
-        dotnet_locations[2] = new Array('-30px', '-65px'); // php
+        dotnet_locations[2] = new Array('330px', '-50px'); // php
         dotnet_locations[3] = new Array('330px', '200px'); // ruby
         dotnet_locations[4] = new Array('-10px', '-80px');  // python
         dotnet_locations[5] = new Array('10px', '230px');  // pm
@@ -199,7 +199,7 @@ app.controller('bubble-ctrl', ['$scope',
         //top, left
         qc_locations[0] = new Array('10px', '245px'); // java
         qc_locations[1] = new Array('370px', '110px'); // .net
-        qc_locations[2] = new Array('-35px', '210px'); // php
+        qc_locations[2] = new Array('-10px', '210px'); // php
         qc_locations[3] = new Array('-62px', '10px'); // ruby
         qc_locations[4] = new Array('100px', '290px');  // python
         qc_locations[5] = new Array('-60px', '-30px');  //pm
