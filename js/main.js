@@ -110,115 +110,115 @@ app.controller('bubble-ctrl', ['$scope',
 
         var dotnet_locations = new Array();
         //top, left
-        dotnet_locations[0] = new Array('370px', '110px'); // java
-        dotnet_locations[1] = new Array('100px', '250px'); // .net
-        dotnet_locations[2] = new Array('330px', '-50px'); // php
-        dotnet_locations[3] = new Array('330px', '200px'); // ruby
-        dotnet_locations[4] = new Array('-10px', '-80px');  // python
-        dotnet_locations[5] = new Array('10px', '230px');  // pm
-        dotnet_locations[6] = new Array('-30px', '200px');  //qc
-        dotnet_locations[7] = new Array('200px', '100px');
-        dotnet_locations[8] = new Array('150px', '100px');
+        dotnet_locations[0] = new Array('420px', '110px'); // java
+        dotnet_locations[1] = new Array('150px', '250px'); // .net
+        dotnet_locations[2] = new Array('380px', '-50px'); // php
+        dotnet_locations[3] = new Array('380px', '200px'); // ruby
+        dotnet_locations[4] = new Array('40px', '-80px');  // python
+        dotnet_locations[5] = new Array('50px', '230px');  // pm
+        dotnet_locations[6] = new Array('10px', '200px');  //qc
+        dotnet_locations[7] = new Array('350px', '-80px'); //dba
+        dotnet_locations[8] = new Array('0px', '100px');
 
 
         var php_locations = new Array();
         //top, left
-        php_locations[0] = new Array('-10px', '-220px');// java
-        php_locations[1] = new Array('-30px', '250px'); // .net
-        php_locations[2] = new Array('-290px', '10px'); 
-        php_locations[3] = new Array('180px', '280px'); // ruby
-        php_locations[4] = new Array('280px', '-190px');  // python
-        php_locations[5] = new Array('65px', '-260px');  //pm
-        php_locations[6] = new Array('180px', '280px'); //Qc
-        php_locations[7] = new Array('220px', '-220px'); //DBA
-        php_locations[8] = new Array('175px', '-240px');  //BA
+        php_locations[0] = new Array('40px', '-220px');// java
+        php_locations[1] = new Array('10px', '250px'); // .net
+        php_locations[2] = new Array('-240px', '10px'); 
+        php_locations[3] = new Array('230px', '280px'); // ruby
+        php_locations[4] = new Array('230px', '-190px');  // python
+        php_locations[5] = new Array('115px', '-260px');  //pm
+        php_locations[6] = new Array('230px', '280px'); //Qc
+        php_locations[7] = new Array('270px', '-220px'); //DBA
+        php_locations[8] = new Array('125px', '-240px');  //BA
 
 
         var java_locations = new Array();
         //top, left
-        java_locations[0] = new Array('25px', '50px');
-        java_locations[1] = new Array('290px', '-100px');// .net
-        java_locations[2] = new Array('25px', '330px');   // php
-        java_locations[3] = new Array('290px', '-100px'); // ruby
-        java_locations[4] = new Array('180px', '-150px');  // python
-        java_locations[5] = new Array('250px', '-140px'); // pm
-        java_locations[6] = new Array('100px', '-150px');  // QC
-        java_locations[7] = new Array('305px', '250px'); //DBA
-        java_locations[8] = new Array('340px', '190px'); // BA
+        java_locations[0] = new Array('75px', '50px');
+        java_locations[1] = new Array('340px', '-100px');// .net
+        java_locations[2] = new Array('75px', '330px');   // php
+        java_locations[3] = new Array('340px', '-100px'); // ruby
+        java_locations[4] = new Array('330px', '-100px');  // python
+        java_locations[5] = new Array('300px', '-140px'); // pm
+        java_locations[6] = new Array('150px', '-150px');  // QC
+        java_locations[7] = new Array('355px', '250px'); //DBA
+        java_locations[8] = new Array('390px', '190px'); // BA
 
         var pm_locations = new Array();
         //top, left
-        pm_locations[0] = new Array('10px', '160px'); // java
-        pm_locations[1] = new Array('330px', '250px'); // .net
-        pm_locations[2] = new Array('300px', '-90px'); // php
-        pm_locations[3] = new Array('150px', '290px'); // ruby
-        pm_locations[4] = new Array('100px', '-100px');  // python
-        pm_locations[5] = new Array('-100px', '210px');  
-        pm_locations[6] = new Array('380px', '60px');  //Qc
-        pm_locations[7] = new Array('360px', '180px'); //DBA
-        pm_locations[8] = new Array('350px', '-10px');  //BA
+        pm_locations[0] = new Array('60px', '160px'); // java
+        pm_locations[1] = new Array('380px', '250px'); // .net
+        pm_locations[2] = new Array('350px', '-90px'); // php
+        pm_locations[3] = new Array('200px', '290px'); // ruby
+        pm_locations[4] = new Array('15px', '-100px');  // python
+        pm_locations[5] = new Array('-50px', '210px');  
+        pm_locations[6] = new Array('430px', '60px');  //Qc
+        pm_locations[7] = new Array('410px', '180px'); //DBA
+        pm_locations[8] = new Array('400px', '-10px');  //BA
 
         var python_locations = new Array();
         //top, left
-        python_locations[0] = new Array('50px', '290px'); // java
-        python_locations[1] = new Array('185px', '280px'); // .net
-        python_locations[2] = new Array('0', '-230px');    // php
-        python_locations[3] = new Array('-60px', '-200px'); // ruby
-        python_locations[4] = new Array('100px', '200px');  // python
-        python_locations[5] = new Array('100px', '295px'); // pm
-        python_locations[6] = new Array('240px', '-240px'); // QC
-        python_locations[7] = new Array('10px', '260px'); // DBA
-        python_locations[8] = new Array('130px', '290px');  //BA
+        python_locations[0] = new Array('100px', '290px'); // java
+        python_locations[1] = new Array('235px', '280px'); // .net
+        python_locations[2] = new Array('50px', '-230px');    // php
+        python_locations[3] = new Array('-10px', '-200px'); // ruby
+        python_locations[4] = new Array('150px', '200px');  // python
+        python_locations[5] = new Array('150px', '295px'); // pm
+        python_locations[6] = new Array('290px', '-240px'); // QC
+        python_locations[7] = new Array('60px', '260px'); // DBA
+        python_locations[8] = new Array('180px', '290px');  //BA
 
         var ruby_locations = new Array();
         //top, left
-        ruby_locations[0] = new Array('290px', '-150px');// java
-        ruby_locations[1] = new Array('100px', '-200px'); // .net
-        ruby_locations[2] = new Array('310px', '200px'); // php
-        ruby_locations[3] = new Array('-50px', '50px'); // ruby
-        ruby_locations[4] = new Array('-50px', '190px');  // python
-        ruby_locations[5] = new Array('360px', '-90px'); //pm
-        ruby_locations[6] = new Array('-45px', '-130px');  // QC
-        ruby_locations[7] = new Array('85px', '-200px'); //DBA
-        ruby_locations[8] = new Array('-30px', '250px');  //BA
+        ruby_locations[0] = new Array('340px', '-150px');// java
+        ruby_locations[1] = new Array('50px', '-200px'); // .net
+        ruby_locations[2] = new Array('360px', '200px'); // php
+        ruby_locations[3] = new Array('0px', '50px'); // ruby
+        ruby_locations[4] = new Array('0px', '190px');  // python
+        ruby_locations[5] = new Array('410px', '-90px'); //pm
+        ruby_locations[6] = new Array('5px', '-130px');  // QC
+        ruby_locations[7] = new Array('135px', '-200px'); //DBA
+        ruby_locations[8] = new Array('20px', '250px');  //BA
 
         var ba_locations = new Array();
         //top, left
-        ba_locations[0] = new Array('180px', '-160px'); // java
-        ba_locations[1] = new Array('-10px', '-110px'); // .net
-        ba_locations[2] = new Array('200px', '-160px'); // php
-        ba_locations[3] = new Array('200px', '-150px'); // ruby
-        ba_locations[4] = new Array('20px', '-200px');  // python
-        ba_locations[5] = new Array('10px', '-100px');  // Pm
-        ba_locations[6] = new Array('50px', '280px');  //qc
-        ba_locations[7] = new Array('10px', '-100px');  //DBA
-        ba_locations[8] = new Array('-100px', '150px');
+        ba_locations[0] = new Array('230px', '-160px'); // java
+        ba_locations[1] = new Array('40px', '-110px'); // .net
+        ba_locations[2] = new Array('250px', '-160px'); // php
+        ba_locations[3] = new Array('250px', '-150px'); // ruby
+        ba_locations[4] = new Array('70px', '-200px');  // python
+        ba_locations[5] = new Array('60px', '-100px');  // Pm
+        ba_locations[6] = new Array('100px', '280px');  //qc
+        ba_locations[7] = new Array('100px', '-100px');  //DBA
+        ba_locations[8] = new Array('-50px', '150px');
 
 
         var qc_locations = new Array();
         //top, left
-        qc_locations[0] = new Array('10px', '245px'); // java
-        qc_locations[1] = new Array('370px', '110px'); // .net
-        qc_locations[2] = new Array('-10px', '210px'); // php
-        qc_locations[3] = new Array('-62px', '10px'); // ruby
-        qc_locations[4] = new Array('100px', '290px');  // python
-        qc_locations[5] = new Array('-60px', '-30px');  //pm
-        qc_locations[6] = new Array('200px', '130px');  
-        qc_locations[7] = new Array('-35px', '190px'); //DBA
-        qc_locations[8] = new Array('-30px', '-150px'); //BA
+        qc_locations[0] = new Array('60px', '245px'); // java
+        qc_locations[1] = new Array('420px', '110px'); // .net
+        qc_locations[2] = new Array('40px', '210px'); // php
+        qc_locations[3] = new Array('-12px', '10px'); // ruby
+        qc_locations[4] = new Array('150px', '290px');  // python
+        qc_locations[5] = new Array('-10px', '-30px');  //pm
+        qc_locations[6] = new Array('250px', '130px');  
+        qc_locations[7] = new Array('25px', '190px'); //DBA
+        qc_locations[8] = new Array('20px', '-150px'); //BA
 
 
         var dba_locations = new Array();
         //top, left
-        dba_locations[0] = new Array('245px', '270px'); // java
-        dba_locations[1] = new Array('-40px', '210px'); // .net
-        dba_locations[2] = new Array('190px', '290px'); // php
-        dba_locations[3] = new Array('0px', '240px'); // ruby
-        dba_locations[4] = new Array('270px', '260px');  // python
-        dba_locations[5] = new Array('280px', '250px');  // pm
-        dba_locations[6] = new Array('330px', '210px');  //Qc
-        dba_locations[7] = new Array('80px', '190px');
-        dba_locations[8] = new Array('70px', '-140px'); //BA
+        dba_locations[0] = new Array('295px', '270px'); // java
+        dba_locations[1] = new Array('10px', '210px'); // .net
+        dba_locations[2] = new Array('240px', '290px'); // php
+        dba_locations[3] = new Array('50px', '240px'); // ruby
+        dba_locations[4] = new Array('320px', '260px');  // python
+        dba_locations[5] = new Array('320px', '250px');  // pm
+        dba_locations[6] = new Array('380px', '210px');  //Qc
+        dba_locations[7] = new Array('130px', '190px');
+        dba_locations[8] = new Array('120px', '-140px'); //BA
 
         $('.circle').click(function(e) {
             e.preventDefault();
@@ -260,7 +260,7 @@ app.controller('bubble-ctrl', ['$scope',
 
                 // move the new circle and increase size to center
                 $('#' + circle_id).addClass('active').removeClass('small').animate({
-                    'top': '30px',
+                    'top': '80px',
                     'left': '-50px'
                 }).children('.circle-content').animate({
                     'width': 340,
