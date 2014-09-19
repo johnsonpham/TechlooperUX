@@ -40,8 +40,8 @@
     }
     #box #baTech {
         position: absolute;
-        top: 170px;
-        left: 250px;
+        top: 0px;
+        left: -120px;
         z-index: 7;
     }
     #box #rubyTech {
